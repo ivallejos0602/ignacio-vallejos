@@ -1,0 +1,207 @@
+
+  
+  /*nav-bar y logo del nav bar*/
+  .borde-logo { 
+               border-radius: 50%;
+               padding: 5px;
+               width: 60px;
+               border: 1px solid #ddd;
+              } 
+  
+.borde-logo:hover {
+      box-shadow: 0 0 5px 5px rgba(224, 61, 20, 0.5);
+}
+/*
+en la clase navbar tuve que "sacarle" la clase navbar-light, sino no me dejaba aplicar
+los estilos que queria aplicar en los links incluidos en las listas nav-link.
+También intenté redefinir la regla para nav-link y no supe como.
+Consecuentemente me pasa que para dimensiones xs y sm donde tiene que aparecer el icono "prendido"
+no aparece prendido, pero al cliquear, despliega el menu, esto es consecuencia de haber sacado 
+navbar-light
+
+*/
+ .navbar  .navbar-nav  li  a {  
+                           
+                                color:white; 
+                                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                font-size: 15px;
+                                
+                            }
+
+
+ .navbar  .navbar-nav  li  a:hover {  
+            
+                              color:rgb(7, 7, 59); 
+                              
+                             }   
+
+/******************************************/
+       /*carrousel*/
+
+ /*defino altura para carrousel*/ 
+ .h-img-carr {
+       height: 507px;     
+}
+.pd-top-carr{
+      padding-top: 40px;
+}
+
+
+/* TEXTOS PARRAFOS EN LA PAG. PRINCIPAL   */
+
+.leyenda1 {
+         font-size: 70px;
+         text-align: center;
+         margin: 50px;
+}
+
+.leyenda2 {
+         font-size: 30px;
+         text-align: center;
+         margin: 20px; 
+}
+
+/*******************************************/
+
+/*   Jumbotron ---> pag. secundaria */
+
+.pd-top-jumbo{
+              padding-top: 30px;
+}
+
+/*******************************************/
+
+
+/*  C a r d s     */
+
+/*boton link dentro de un comp. card*/
+div.card-body a:link, div.card-body a:visited {
+      
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      background-color: rgb(43, 91, 163);
+      color: white;
+      padding: 14px 25px;
+      text-align: center;      
+      
+}
+ 
+div.card-body a:hover,div.card-body a:active {
+      background-color: rgb(62, 62, 121);
+}
+
+div.card-body h5 {
+                  text-align: center;
+                  color:rgb(56, 56, 63);
+                  text-transform: capitalize;
+}
+
+div.card-body p {
+                 text-align: center;  
+                  color:rgb(27, 27, 90);
+                 }
+
+.pd-top-card {
+              padding-top: 20px;
+}                 
+
+.pd-card-lnk{
+      
+      margin-top: 40px;
+      margin-bottom: 40px;
+      
+}
+
+.mg-card {
+      margin :80px;    
+}
+
+
+/*********************************************************************/
+
+/* estilos para iconos */
+.icon {
+      font-size: 2rem;
+      margin: 10px;
+      color:black;
+  }
+
+  .icon:hover {
+       /* color: blue;*/
+       color: white;
+  }
+
+  .icon-financ {
+      font-size: 2rem;
+      margin: 10px;
+      color:white;
+
+  }
+
+  .icon-financ:hover {
+      /* color: blue;*/
+      color: rgb(26, 170, 206);
+ }
+
+ /****************************/
+
+  .letra-pie{
+        font-size: 30px;
+        text-align: right;
+      
+  }
+
+
+  /*alineación del contenido del pie (texto)*/
+  .just-pie { 
+         justify-content: flex-end;
+  }
+
+
+  .h-barra-blue {
+                  height: 50px;
+              }
+
+/*******************************************/
+
+  /* BACKGROUNDS*/
+
+.bg-barra-blue {
+        background-color: rgb(3, 3, 46);        
+  }
+
+    /*personalizac nav-bar y pie */
+.bg-company, .pie {
+      
+      background-color: rgb(28, 100, 133);
+      
+}  
+  
+
+/*******************************************/
+
+/* estilos para iconos */
+.icon {
+      font-size: 2rem;
+      margin: 10px;
+      color:black;
+  }
+
+  .icon:hover {
+       /* color: blue;*/
+       color: white;
+  }
+
+  .icon-financ {
+      font-size: 2rem;
+      margin: 10px;
+      color:white;
+
+  }
+
+  .icon-financ:hover {
+      /* color: blue;*/
+      color: rgb(26, 170, 206);
+ }
+
+ /****************************/
+
