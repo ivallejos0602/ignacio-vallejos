@@ -1,0 +1,49 @@
+
+#div-contenedor {
+    
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    height: 380px;
+    background-color: pink;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 85%;
+  }
+
+td, th {
+    text-align: left;
+    padding: 8px;  
+    border: 1px solid rgb(222, 227, 235);   
+  }
+
+/* BACKGROUNDS */  
+
+th {
+    background-color: white;
+}
+
+tr{
+    background-color: rgb(155, 192, 214);
+} 
+
+/*con este estilo se consigue que las filas impares
+tengan un azul mas suave(creo que es para filas por medio)
+lo extraje de w3school*/
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  
+
+
+
+
+
