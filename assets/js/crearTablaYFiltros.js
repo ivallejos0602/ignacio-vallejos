@@ -108,6 +108,32 @@ Object.keys(vehiculo).forEach(clave => {
   fila.appendChild(td); 
 });
 
+  td = document.createElement("td");
+  /*
+  td.innerHTML = "[borrar] -- [editar]";
+  */
+  let botonE = document.createElement("button");
+  botonE.innerText="edit";
+ 
+
+  
+  
+  botonE.classList.add('button');
+  botonE.classList.add('button1');
+ 
+  let botonD = document.createElement("button");
+
+  botonD.innerText="delete";
+  botonD.classList.add('button');
+  botonD.classList.add('button3');
+  
+  td.appendChild(botonE);
+  td.appendChild(botonD);
+ /*
+  <td><button class="button button1">Green</button></td> 
+   */
+  fila.appendChild(td); 
+
 tbodyEl.appendChild(fila);
 
 }
@@ -127,6 +153,9 @@ let crearEncabezadoTabla = (vehiculo,tabla) => {
     tr.appendChild(th);
 
   });
+  th=document.createElement("th");
+  th.innerHTML="edit / delete Car Data";
+  tr.appendChild(th);
   
   theadEl.appendChild(tr);
 
