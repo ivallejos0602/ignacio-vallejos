@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style-table.css">
-    <title>Parsing de Objetos</title>
+    <title>Aproveche estas oportunidades o se van rodando !</title>
 </head>
 <body>
-    <h1>Vehiculos en Venta</h1>
+    <div class="header-seccion-t">
+    <h1>Vehiculos en Venta, aproveche estas Oportunidades, o se van rodando !</h1>
+    </div>
     <div id="div-contenedor"></div>
-   <p>Aplicar Un filtro por tipo de combustible a la tabla :</p> 
-   
-  <input type="radio" id="nafta" name="combustible" value="nafta">
-  <label for="nafta"> Nafta</label><br>
-  <input type="radio" id="gnc" name="combustible" value="gnc">
-  <label for="gnc"> Gnc</label><br>
-  <input type="radio" id="diesel" name="combustible" value="diesel">
-  <label for="diesel"> Diesel</label><br>
-  <input type="radio" id="all" name="combustible" value="all">
-  <label for="all"> all</label>
-  
+
+   <div id="div-filtros"> 
+        <p>Aplicar Un filtro por tipo de combustible a la tabla :</p> 
+        
+        <input type="radio" id="nafta" name="combustible" value="nafta">
+        <label for="nafta"> Nafta</label><br>
+        <input type="radio" id="gnc" name="combustible" value="gnc">
+        <label for="gnc"> Gnc</label><br>
+        <input type="radio" id="diesel" name="combustible" value="diesel">
+        <label for="diesel"> Diesel</label><br>
+        <input type="radio" id="all" name="combustible" value="all">
+        <label for="all"> all</label>
+</div>
    
     <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
     

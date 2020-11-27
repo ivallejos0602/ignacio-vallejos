@@ -109,14 +109,13 @@ Object.keys(vehiculo).forEach(clave => {
 });
 
   td = document.createElement("td");
+
+  td.classList.add('td-btn');
   /*
   td.innerHTML = "[borrar] -- [editar]";
   */
   let botonE = document.createElement("button");
-  botonE.innerText="edit";
- 
-
-  
+  botonE.innerText="edit";  
   
   botonE.classList.add('button');
   botonE.classList.add('button1');

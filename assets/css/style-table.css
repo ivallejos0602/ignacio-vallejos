@@ -3,8 +3,12 @@
     
     display: flex;    
     justify-content: center;
+    /*
     align-items: center;
+    */
+    /*
     height: 380px;
+    */
     background-color: pink;
 }
 
@@ -23,6 +27,10 @@ td, th {
     padding: 8px;  
     border: 1px solid rgb(222, 227, 235);   
   }
+
+.td-btn {
+    text-align: center;
+}  
 
 /* BACKGROUNDS */  
 
@@ -45,12 +53,16 @@ tr:nth-child(even) {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 10px 32px;
+    padding: 10px 22px;
     text-align: center;
     text-decoration: none;
+    
     display: inline-block;
-    font-size: 16px;
+    
+    font-size: 13px;
+    
     margin: 4px 2px;
+    
     transition-duration: 0.4s;
     cursor: pointer;
   }
@@ -106,6 +118,24 @@ tr:nth-child(even) {
     background-color: #555555;
     color: white;
   }
+
+  /*****************************************************/
+
+  /*estilos de las secciones de la tabla*/
+
+  .header-seccion-t {
+    text-align: center;
+
+    background-color: #4CAF50;
+    
+    display: flex;
+    
+    justify-content: space-around;
+    
+    margin-bottom: 30px;
+}
+
+
 
 
   
