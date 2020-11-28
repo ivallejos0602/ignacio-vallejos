@@ -1,89 +1,8 @@
-let vehiculos = [
-
-  {
-    marca: "Chevrolet",
-    modelo: "Meriva",
-    age: "2012",
-    color: "Negro",
-    kilometraje: "180000",
-    combustible: "nafta",
-    precio: "$380000"
-  },
-
-  {
-    marca: "Renault",
-    modelo: "Logan Intense",
-    age: "2019",
-    color: "Blanco Tiza",
-    kilometraje: "2000",
-    combustible: "nafta",
-    precio: "$1229000"
-  },
-
-  {
-    marca: "Ford",
-    modelo: "Ka sel",
-    age: "2018",
-    color: "Rojo",
-    kilometraje: "20000",
-    combustible: "nafta",
-    precio: "$1150000"
-  },
-
-  {
-    marca: "Ford",
-    modelo: "Fiesta Kinetic",
-    age: "2015",
-    color: "Azul",
-    kilometraje: "89000",
-    combustible: "nafta",
-    precio: "$900000"
-  },
-
-  {
-    marca: "Ford",
-    modelo: "Focus",
-    age: "2017",
-    color: "gris plata",
-    kilometraje: "55000",
-    combustible: "diesel",
-    precio: "$1250000"
-  },
-
-  {
-    marca: "Toyota",
-    modelo: "Corolla",
-    age: "2013",
-    color: "blanco perlado",
-    kilometraje: "78000",
-    combustible: "nafta",
-    precio: "$955000"
-  },
-
-  {
-    marca: "Renault",
-    modelo: "Kwid",
-    age: "2019",
-    color: "blanco esmeralda",
-    kilometraje: "5000",
-    combustible: "nafta",
-    precio: "$975000"
-  },
-
-  {
-    marca: "Ford",
-    modelo: "EcoSport",
-    age: "2011",
-    color: "gris oscuro",
-    kilometraje: "120000",
-    combustible: "gnc",
-    precio: "$500000"
-  }
-];
 
 
 let divContenedor = document.getElementById("div-contenedor");
-
+let btnAddVehiculoEl=document.getElementById("btnAddVehiculo");
+let overlayEl = document.getElementsByClassName('overlay')[0];
 let radNaftaEl = document.getElementById("nafta");
 let radGncEl = document.getElementById("gnc");
 let radDieselEl = document.getElementById("diesel");
@@ -92,6 +11,10 @@ let radAllEl = document.getElementById("all");
 var tabla=document.createElement("table");
 
 tabla.id = "MiTabla";
+
+
+/************************************************************* */
+/*****  funcion para crear filas en la tabla    ***** */
 
 let crearFila = (vehiculo,tbodyEl) => {
 
@@ -138,6 +61,7 @@ tbodyEl.appendChild(fila);
 }
 
 /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* funcion para crear los elementos th en la tabla */
 
 let crearEncabezadoTabla = (vehiculo,tabla) => {
   let th,tr,theadEl;
@@ -261,3 +185,56 @@ let borrarElementosTabla = () => {
                                                   crearCuerpoTabla(vehiculos,document.getElementById("bodyMiTabla"));
                                                    } );                                               
                                               
+
+/*********************************************** */
+
+/* Se muestra el modal cuando finaliza la compra */
+function showModal(price) {
+  /*
+  totalPriceEl.innerText = price;
+  */
+ console.log("MOSTRANDO PRECIO : "+parseInt(price));
+  overlayEl.classList.remove('display-none');
+}
+
+/* Aca tengo el manejador del evento click */
+btnAddVehiculoEl.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    /* se calcula el precio total y se muestra el mismo en el modal */
+    /*const totalPrice = calculateTotalPrice();*/
+    let totalPrice=1000;
+    showModal(totalPrice);
+})
+
+let subjectObject = {
+  "Front-end": {
+    "HTML": ["Links", "Images", "Tables", "Lists"],
+    "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
+    "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]    
+  },
+  "Back-end": {
+    "PHP": ["Variables", "Strings", "Arrays"],
+    "SQL": ["SELECT", "UPDATE", "DELETE"]
+  }
+}
+window.onload = function() {
+  let subjectSel = document.getElementById("subject");
+  let topicSel = document.getElementById("topic");
+  let chapterSel = document.getElementById("chapter");
+  for (let x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //display correct values
+    for (let y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    //display correct values
+    let z = subjectObject[subjectSel.value][this.value];
+    for (let i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}

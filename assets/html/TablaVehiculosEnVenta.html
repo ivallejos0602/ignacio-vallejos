@@ -8,8 +8,11 @@
 </head>
 <body>
     <div class="header-seccion-t">
-    <h1>Vehiculos en Venta, aproveche estas Oportunidades, o se van rodando !</h1>
+        <h2>Vehiculos en Venta. Sólo pueden operar con estos vehiculos los vendedores autorizados por la concesionaria.</h2>
     </div>
+    <div id="div-btn-agregar-vehiculo">
+        <button id="btnAddVehiculo" class="button button2">Agregar Nuevo Vehiculo</button>
+    </div>    
     <div id="div-contenedor"></div>
 
    <div id="div-filtros"> 
@@ -24,8 +27,41 @@
         <input type="radio" id="all" name="combustible" value="all">
         <label for="all"> all</label>
 </div>
-   
+
+<!--codigo para editar y borrar filas de la tabla
+* asi como crear una nueva fila en la tabla
+-->                                                  
+
+
+<div class="overlay display-none">
+<!-- modal -->
+    <div class="modal">
+    <!-- card -->
+        <div class="card card-total">
+               <!-- código del formulario para cargar la tabla-->
+               <h1>Cascading Dropdown Example</h1>
+
+                <form name="form1" id="form1" action="">
+                        Subjects: <select name="subject" id="subject">
+                            <option value="" selected="selected">Select subject</option>
+                        </select>
+                        <br><br>
+                        Topics: <select name="topic" id="topic">
+                            <option value="" selected="selected">Please select subject first</option>
+                        </select>
+                        <br><br>
+                        Chapters: <select name="chapter" id="chapter">
+                            <option value="" selected="selected">Please select topic first</option>
+                        </select>
+                        <br><br>
+                        <input type="submit" value="Submit">  
+                </form>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="../js/datosParaTabla.js"></script>
     <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
+    
     
    </body>
 </html>

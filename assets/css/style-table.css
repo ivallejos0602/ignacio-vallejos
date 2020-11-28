@@ -12,6 +12,13 @@
     background-color: pink;
 }
 
+#div-btn-agregar-vehiculo {
+  display: flex;
+  justify-content: space-around;
+  background-color: aquamarine;
+ 
+}
+
 h1, h3 {
     text-align: center;
 }
@@ -78,16 +85,20 @@ tr:nth-child(even) {
     color: white;
   }
   
+  
   .button2 {
-    background-color: white; 
+    font-size:20px;
+    background-color:#008CBA;
     color: black; 
-    border: 2px solid #008CBA;
+    border: 2px solid #06161b;
   }
+  
   
   .button2:hover {
     background-color: #008CBA;
     color: white;
   }
+  
   
   .button3 {
     background-color: white; 
@@ -99,7 +110,10 @@ tr:nth-child(even) {
     background-color: #f44336;
     color: white;
   }
+
+ 
   
+  /*
   .button4 {
     background-color: white;
     color: black;
@@ -119,9 +133,11 @@ tr:nth-child(even) {
     color: white;
   }
 
+  */
+
   /*****************************************************/
 
-  /*estilos de las secciones de la tabla*/
+  /*estilos de las seccion header del menú de Oportunidades*/
 
   .header-seccion-t {
     text-align: center;
@@ -132,7 +148,50 @@ tr:nth-child(even) {
     
     justify-content: space-around;
     
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+/*****************************************************/
+/*
+estilos del modal para agregar, editar filas, asi como también eliminar
+*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.display-none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.modal {
+  width: 50%;
+  height: auto;
+}
+
+.card {
+  width: 40%;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.card-total {
+  margin: auto;
+  background-color: white;
+  color: black;
+  width: 100%;
 }
 
 
