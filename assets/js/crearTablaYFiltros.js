@@ -17,6 +17,7 @@ let inputKilometrajeEl=document.getElementById("inputKilometraje");
 let inputAgeEl=document.getElementById("inputAge");
 let inputColorEl=document.getElementById("inputColor");
 let inputCombustibleEl=document.getElementById("inputCombustible");
+let inputPrecioEl=document.getElementById("inputPrecio");
 
 /* botones de aceptar - cancelar del modal*/
 
@@ -224,6 +225,8 @@ btnAddVehiculoEl.addEventListener('click', (ev) => {
 /* eventos de los botones del modal */
 
 btnAceptarAgregarVehiculo.addEventListener("click", () => {
+ 
+ /* 
  console.log(inputMarcaEl.value);
  console.log(inputModeloEl.value);
  console.log(inputKilometrajeEl.value);
@@ -231,7 +234,30 @@ btnAceptarAgregarVehiculo.addEventListener("click", () => {
  console.log(inputColorEl.options[inputColorEl.selectedIndex].value);
  console.log(inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value);
  console.log(inputColorEl.options);
-   });   
+ */
+
+ //creo el objeto vehiculo
+  let vehiculo= {
+      marca: inputMarcaEl.value,
+      modelo: inputModeloEl.value,
+      age: inputAgeEl.value,
+      color: inputColorEl.options[inputColorEl.selectedIndex].value,
+      kilometraje: inputKilometrajeEl.value,
+      combustible: inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value,
+      precio: inputPrecioEl.value,
+    }
+ 
+ //agrego el vehiculo al arreglo de objetos vehiculo
+ 
+  console.log(vehiculos); 
+
+  vehiculos.push(vehiculo);
+
+  let tbodyEl=document.getElementById("bodyMiTabla");
+
+  crearFila(vehiculo,tbodyEl);
+
+  });   
 
 btnCancelarAgregarVehiculo.addEventListener("click", () => {
     console.log("pepepe");
