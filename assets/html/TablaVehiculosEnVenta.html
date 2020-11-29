@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style-table.css">
-    <title>Aproveche estas oportunidades o se van rodando !</title>
+    <title>Oportunidades</title>
 </head>
 <body>
     <div class="header-seccion-t">
@@ -39,23 +39,84 @@
     <!-- card -->
         <div class="card card-total">
                <!-- código del formulario para cargar la tabla-->
-               <h1>Cascading Dropdown Example</h1>
+             
+             <div> 
+                 <h3>Agregar Nuevo Vehiculo</h3><br>    
+             </div>
 
-                <form name="form1" id="form1" action="">
-                        Subjects: <select name="subject" id="subject">
-                            <option value="" selected="selected">Select subject</option>
-                        </select>
-                        <br><br>
-                        Topics: <select name="topic" id="topic">
-                            <option value="" selected="selected">Please select subject first</option>
-                        </select>
-                        <br><br>
-                        Chapters: <select name="chapter" id="chapter">
-                            <option value="" selected="selected">Please select topic first</option>
-                        </select>
-                        <br><br>
-                        <input type="submit" value="Submit">  
-                </form>
+             <div>
+                <label for="cars">Marca:   </label>
+                    <select id="inputMarca" name="cars">
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Toyota">Toyota</option>
+                    </select>
+                <br><br>
+            </div>   
+           
+            <div>
+                <label for="modelo">Modelo:</label><br>
+                    <input type="text" id="inputModelo" name="modelo" value=""><br><br>
+            </div>    
+            
+            <div>
+                <label for="kilometraje">Kilometraje:</label><br>
+                    <input type="text" id="inputKilometraje" name="kilometraje" value=""><br><br>
+            </div>        
+              
+            <div>
+                <label for="age">Año:</label>
+                    <select id="inputAge" name="age">
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>                
+                    </select>
+              <br><br>
+            </div>  
+            
+            <div>
+              <label for="Color">Color:</label>
+                    <select id="inputColor" name="color">
+                            <option value="rojo">rojo</option>
+                            <option value="azul">azul</option>
+                            <option value="gris">gris</option>
+                            <option value="negro">negro</option>
+                            <option value="azul">azul</option>
+                            <option value="blanco">blanco</option>
+                            <option value="purpura">purpura</option>
+                            <option value="ocre">ocre</option>
+                    </select>
+              <br><br>
+            </div>
+
+            <div>
+                    <label for="Combustible">Combustible</label>
+                            <select id="inputCombustible" name="combustible">
+                                    <option value="gnc">gnc</option>
+                                    <option value="diesel">diesel</option>
+                                    <option value="nafta">nafta</option>
+                            </select>
+                    <br><br>
+            </div>    
+
+            <div class="div-modal-btn">
+                <div>
+                    <button  id="btnAceptarAgregarVehiculo">Aceptar</button>
+                </div>
+                <div>
+                    <button  id="btnCancelarAgregarVehiculo">Cancelar</button>
+                </div>
+            </div>    
+
         </div>
     </div>
 </div>

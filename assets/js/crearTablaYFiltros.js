@@ -8,6 +8,19 @@ let radGncEl = document.getElementById("gnc");
 let radDieselEl = document.getElementById("diesel");
 let radAllEl = document.getElementById("all");
 
+/****************************/
+/* elementos del modal para agregar un Vehiculo en la tabla*/ 
+
+let inputMarcaEl=document.getElementById("inputMarca");
+let inputModeloEl=document.getElementById("inputModelo");
+let inputKilometrajeEl=document.getElementById("inputKilometraje");
+let inputAgeEl=document.getElementById("inputAge");
+let inputColorEl=document.getElementById("inputColor");
+let inputCombustibleEl=document.getElementById("inputCombustible");
+
+/* botones de aceptar - cancelar del modal*/
+
+/****************************/
 var tabla=document.createElement("table");
 
 tabla.id = "MiTabla";
@@ -206,35 +219,27 @@ btnAddVehiculoEl.addEventListener('click', (ev) => {
     showModal(totalPrice);
 })
 
-let subjectObject = {
-  "Front-end": {
-    "HTML": ["Links", "Images", "Tables", "Lists"],
-    "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
-    "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]    
-  },
-  "Back-end": {
-    "PHP": ["Variables", "Strings", "Arrays"],
-    "SQL": ["SELECT", "UPDATE", "DELETE"]
-  }
-}
-window.onload = function() {
-  let subjectSel = document.getElementById("subject");
-  let topicSel = document.getElementById("topic");
-  let chapterSel = document.getElementById("chapter");
-  for (let x in subjectObject) {
-    subjectSel.options[subjectSel.options.length] = new Option(x, x);
-  }
-  subjectSel.onchange = function() {
-    //display correct values
-    for (let y in subjectObject[this.value]) {
-      topicSel.options[topicSel.options.length] = new Option(y, y);
-    }
-  }
-  topicSel.onchange = function() {
-    //display correct values
-    let z = subjectObject[subjectSel.value][this.value];
-    for (let i = 0; i < z.length; i++) {
-      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
-    }
-  }
-}
+/*********************************************** */
+
+/* eventos de los botones del modal */
+
+btnAceptarAgregarVehiculo.addEventListener("click", () => {
+ console.log(inputMarcaEl.value);
+ console.log(inputModeloEl.value);
+ console.log(inputKilometrajeEl.value);
+ console.log(inputAgeEl.value);
+ console.log(inputColorEl.options[inputColorEl.selectedIndex].value);
+ console.log(inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value);
+ console.log(inputColorEl.options);
+   });   
+
+btnCancelarAgregarVehiculo.addEventListener("click", () => {
+    console.log("pepepe");
+      });  
+
+
+
+
+
+
+

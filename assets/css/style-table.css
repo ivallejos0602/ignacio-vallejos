@@ -19,6 +19,12 @@
  
 }
 
+.div-modal-btn{
+   display:flex;
+   justify-content: space-around;
+
+}
+
 h1, h3 {
     text-align: center;
 }
