@@ -8,6 +8,8 @@ let radGncEl = document.getElementById("gnc");
 let radDieselEl = document.getElementById("diesel");
 let radAllEl = document.getElementById("all");
 
+
+
 /****************************/
 /* elementos del modal para agregar un Vehiculo en la tabla*/ 
 
@@ -22,6 +24,10 @@ let inputPrecioEl=document.getElementById("inputPrecio");
 /* botones de aceptar - cancelar del modal*/
 
 /****************************/
+
+let posicionAeditar=-1;   // esta variable es para discernir en el botón aceptar si el aceptar
+                    // es por agregar una fila mas en la tabla, o false en caso que edite una fila  
+                    // si editar=-1 entonces AGREGAR. SI editar >=0 entonces EDITAR 
 var tabla=document.createElement("table");
 
 tabla.id = "MiTabla";
@@ -30,44 +36,81 @@ tabla.id = "MiTabla";
 /************************************************************* */
 /*****  funcion para crear filas en la tabla    ***** */
 
-let crearFila = (vehiculo,tbodyEl) => {
+let crearFila = (vehiculos,tbodyEl,posicion) => {
 
 let fila = document.createElement("tr");
+
+fila.id=posicion;
 
 let td;
 
 /* itero sobre  las claves de un objeto, itero sobre todas
 y armo cada atributo de la fila con la ref. del vehiculo en esa clave */
 
-Object.keys(vehiculo).forEach(clave => {
+Object.keys(vehiculos[posicion]).forEach(clave => {
   td = document.createElement("td");
-  td.innerHTML = `${vehiculo[clave]}`;
+  td.innerHTML = `${vehiculos[posicion][clave]}`;
   fila.appendChild(td); 
 });
 
   td = document.createElement("td");
 
   td.classList.add('td-btn');
-  /*
-  td.innerHTML = "[borrar] -- [editar]";
-  */
+
   let botonE = document.createElement("button");
   botonE.innerText="edit";  
-  
+
+  botonE.id=posicion; 
+
   botonE.classList.add('button');
   botonE.classList.add('button1');
+
+  botonE.addEventListener("click", (ev) => {
+
+        ev.preventDefault();
+
+        posicionAeditar=posicion;   // la posicion será >= 0
+
+        inputMarcaEl.value=vehiculos[posicion].marca;
+        inputModeloEl.value=vehiculos[posicion].modelo;
+        inputColorEl.value=vehiculos[posicion].color;
+        inputPrecioEl.value=vehiculos[posicion].precio;
+        inputAgeEl.value=vehiculos[posicion].age;
+        inputKilometrajeEl.value=vehiculos[posicion].kilometraje;      
+        inputCombustibleEl.value=vehiculos[posicion].combustible;
+
+        //debugger;
+
+       //TENGO QUE SEGUIR ACA, ESTOY EN LA PARTE QUE TENGO QUE RECUPERAR LA FILA DE LA TABLA
+       // Y ASIGNARLE LOS VALORES QUE MODIFICO
+         
+       ///   BORRAR TABLA 
+
+       // LLENARLA CON EL VECTOR MODIFICADO
+
+       //vehiculos[posicion]['marca']=inputMarcaEl.value;     
+
+        showModal();
+
+     });
  
   let botonD = document.createElement("button");
 
+  botonD.id=posicion;
+
   botonD.innerText="delete";
+
   botonD.classList.add('button');
   botonD.classList.add('button3');
+
+  botonD.addEventListener("click", () => {
+    //alert("el boton tiene el id :"+posicion);
+    borrarFila(posicion);
+  });
   
   td.appendChild(botonE);
   td.appendChild(botonD);
- /*
-  <td><button class="button button1">Green</button></td> 
-   */
+
   fila.appendChild(td); 
 
 tbodyEl.appendChild(fila);
@@ -103,9 +146,9 @@ let crearEncabezadoTabla = (vehiculo,tabla) => {
  /******************************************************** */
 
 let crearCuerpoTabla = (vehiculos,tbodyEl) => {
-
+// i es la posicion del vector, que se pasa como parametro en la funcion crearFila
   for (let i = 0; i < vehiculos.length; i++) {
-    crearFila(vehiculos[i],tbodyEl);
+    crearFila(vehiculos,tbodyEl,i); //paso i como parámetro porque es la posicion en el array
      
 }
 
@@ -203,21 +246,19 @@ let borrarElementosTabla = () => {
 /*********************************************** */
 
 /* Se muestra el modal cuando finaliza la compra */
-function showModal(price) {
-  /*
-  totalPriceEl.innerText = price;
-  */
- console.log("MOSTRANDO PRECIO : "+parseInt(price));
-  overlayEl.classList.remove('display-none');
+function showModal() {
+  
+
+ overlayEl.classList.remove('display-none');
 }
 
 /* Aca tengo el manejador del evento click */
 btnAddVehiculoEl.addEventListener('click', (ev) => {
     ev.preventDefault();
-    /* se calcula el precio total y se muestra el mismo en el modal */
-    /*const totalPrice = calculateTotalPrice();*/
-    let totalPrice=1000;
-    showModal(totalPrice);
+
+    clearInputs();
+     
+    showModal();
 })
 
 /*********************************************** */
@@ -225,43 +266,94 @@ btnAddVehiculoEl.addEventListener('click', (ev) => {
 /* eventos de los botones del modal */
 
 btnAceptarAgregarVehiculo.addEventListener("click", () => {
- 
- /* 
- console.log(inputMarcaEl.value);
- console.log(inputModeloEl.value);
- console.log(inputKilometrajeEl.value);
- console.log(inputAgeEl.value);
- console.log(inputColorEl.options[inputColorEl.selectedIndex].value);
- console.log(inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value);
- console.log(inputColorEl.options);
- */
 
+  
  //creo el objeto vehiculo
   let vehiculo= {
       marca: inputMarcaEl.value,
       modelo: inputModeloEl.value,
       age: inputAgeEl.value,
-      color: inputColorEl.options[inputColorEl.selectedIndex].value,
+     // : inputColorElcolor.options[inputColorEl.selectedIndex].value,
+      color: inputColorEl.value,
       kilometraje: inputKilometrajeEl.value,
-      combustible: inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value,
+     // combustible: inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value,
+      combustible: inputCombustibleEl.value, 
       precio: inputPrecioEl.value,
     }
  
  //agrego el vehiculo al arreglo de objetos vehiculo
  
-  console.log(vehiculos); 
+ // console.log(vehiculos); 
 
+ let tbodyEl=document.getElementById("bodyMiTabla");
+
+if (posicionAeditar==-1) {   // AGREGAR FILA
+  
   vehiculos.push(vehiculo);
+  
+  let posicionFinal=vehiculos.length -1 ;
 
-  let tbodyEl=document.getElementById("bodyMiTabla");
+  crearFila(vehiculos,tbodyEl,posicionFinal);
 
-  crearFila(vehiculo,tbodyEl);
+} else {  // en este caso estaría editando una fila
+  
+ vehiculos[posicionAeditar].marca=inputMarcaEl.value;
+ vehiculos[posicionAeditar].modelo=inputModeloEl.value;
+ vehiculos[posicionAeditar].age=inputAgeEl.value;
+ vehiculos[posicionAeditar].color=inputColorEl.value;
+ vehiculos[posicionAeditar].kilometraje=inputKilometrajeEl.value;
+ vehiculos[posicionAeditar].combustible=inputCombustibleEl.value;
+ vehiculos[posicionAeditar].precio=inputPrecioEl.value;
+
+ borrarElementosTabla();
+debugger;
+ crearCuerpoTabla(vehiculos,tbodyEl);
+ 
+
+ //console.log(vehiculos);
+
+ /////////////////////
+/*
+ inputMarcaEl.value=vehiculo['marca'];
+ inputModeloEl.value=vehiculo['modelo'];
+ inputColorEl.value=vehiculo['color'];
+ inputPrecioEl.value=vehiculo['precio'];
+ inputAgeEl.value=vehiculo['age'];
+ inputKilometrajeEl.value=vehiculo['kilometraje'];      
+ inputCombustibleEl.value=vehiculo['combustible'];
+ */
+ //////////////////////
+    
+
+}
+
+
+  overlayEl.classList.add('display-none');
+
+
+  // ATENCION : DEBE VALIDARSE QUE NO SE INGRESE UN VEHICULO EN LA TABLA
+  // SOLO PULSANDO ACEPTAR EN EL OVERLAY
 
   });   
 
 btnCancelarAgregarVehiculo.addEventListener("click", () => {
-    console.log("pepepe");
+  //clearInputs();
+  overlayEl.classList.add('display-none');
       });  
+
+
+function clearInputs()  {
+  inputMarcaEl.value='none';
+  inputModeloEl.value='';
+  inputAgeEl.value='';
+  inputColorEl.value='none';
+  inputKilometrajeEl.value='';
+  inputCombustibleEl.value='none';
+  inputPrecioEl.value='';
+  
+}
+
+
 
 
 

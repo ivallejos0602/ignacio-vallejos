@@ -44,7 +44,7 @@ let vehiculos = [
       marca: "Ford",
       modelo: "Focus",
       age: "2017",
-      color: "gris plata",
+      color: "Gris Plata",
       kilometraje: "55000",
       combustible: "diesel",
       precio: "$1250000"
@@ -54,7 +54,7 @@ let vehiculos = [
       marca: "Toyota",
       modelo: "Corolla",
       age: "2013",
-      color: "blanco perlado",
+      color: "Blanco Perlado",
       kilometraje: "78000",
       combustible: "nafta",
       precio: "$955000"
@@ -64,7 +64,7 @@ let vehiculos = [
       marca: "Renault",
       modelo: "Kwid",
       age: "2019",
-      color: "blanco esmeralda",
+      color: "Blanco Esmeralda",
       kilometraje: "5000",
       combustible: "nafta",
       precio: "$975000"
@@ -74,7 +74,7 @@ let vehiculos = [
       marca: "Ford",
       modelo: "EcoSport",
       age: "2011",
-      color: "gris oscuro",
+      color: "Gris Oscuro",
       kilometraje: "120000",
       combustible: "gnc",
       precio: "$500000"

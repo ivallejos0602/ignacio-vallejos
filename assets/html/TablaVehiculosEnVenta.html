@@ -47,6 +47,7 @@
              <div>
                 <label for="cars">Marca:   </label>
                     <select id="inputMarca" name="cars">
+                        <option value="none">-none-</option>
                         <option value="Chevrolet">Chevrolet</option>
                         <option value="Renault">Renault</option>
                         <option value="Ford">Ford</option>
@@ -57,17 +58,17 @@
            
             <div>
                 <label for="modelo">Modelo:</label><br>
-                    <input type="text" id="inputModelo" name="modelo" value=""><br><br>
+                    <input type="text" id="inputModelo" name="modelo" value=''><br><br>
             </div>    
             
             <div>
                 <label for="kilometraje">Kilometraje:</label><br>
-                    <input type="text" id="inputKilometraje" name="kilometraje" value=""><br><br>
+                    <input type="text" id="inputKilometraje" name="kilometraje" value=''><br><br>
             </div>    
 
             <div>
                 <label for="precio">Precio:</label><br>
-                    <input type="text" id="inputPrecio" name="precio" value=0><br><br>
+                    <input type="text" id="inputPrecio" name="precio" value=''><br><br>
             </div>        
               
             <div>
@@ -89,23 +90,26 @@
             </div>  
             
             <div>
-              <label for="Color">Color:</label>
+              <label for="color">Color:</label>
                     <select id="inputColor" name="color">
-                            <option value="rojo">rojo</option>
-                            <option value="azul">azul</option>
-                            <option value="gris">gris</option>
-                            <option value="negro">negro</option>
-                            <option value="azul">azul</option>
-                            <option value="blanco">blanco</option>
-                            <option value="purpura">purpura</option>
-                            <option value="ocre">ocre</option>
+                            <option value="none">-none-</option>
+                            <option value="Negro">Negro</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Ocre">Ocre</option>
+                            <option value="Blanco Tiza">Blanco Tiza</option>
+                            <option value="Rojo">Rojo</option>
+                            <option value="Gris Plata">Gris Plata</option>
+                            <option value="Blanco Perlado">Blanco Perlado</option>
+                            <option value="Blanco Esmeralda">Blanco Esmeralda</option>
+                            <option value="Gris Oscuro">Gris Oscuro</option>
                     </select>
               <br><br>
             </div>
 
             <div>
-                    <label for="Combustible">Combustible</label>
+                    <label for="combustible">Combustible</label>
                             <select id="inputCombustible" name="combustible">
+                                    <option value="none">-none-</option> 
                                     <option value="gnc">gnc</option>
                                     <option value="diesel">diesel</option>
                                     <option value="nafta">nafta</option>
