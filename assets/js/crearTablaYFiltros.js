@@ -1,4 +1,5 @@
 
+let idGral=vehiculos.length;  // ESTA VARIABLE SIRVE PARA GENERAR IDENTIFICADORES DE VEHICULOS
 
 let divContenedor = document.getElementById("div-contenedor");
 let btnAddVehiculoEl=document.getElementById("btnAddVehiculo");
@@ -32,15 +33,26 @@ var tabla=document.createElement("table");
 
 tabla.id = "MiTabla";
 
+let borrarVehiculo = (vehiculos,idVehiculo) => {
+
+  let resultado;
+
+  resultado=vehiculos.filter(vehiculo => vehiculo.id !== idVehiculo);
+   
+  //console.log("sin el elemento borrado"+resultado);
+  return resultado;
+
+}
+
 
 /************************************************************* */
 /*****  funcion para crear filas en la tabla    ***** */
 
-let crearFila = (vehiculos,tbodyEl,posicion) => {
+let crearFila = (tbodyEl,posicion) => {
 
 let fila = document.createElement("tr");
 
-fila.id=posicion;
+fila.id=vehiculos[posicion].id;   // Importante : el id de la fila será el id del objeto Vehiculo
 
 let td;
 
@@ -58,9 +70,10 @@ Object.keys(vehiculos[posicion]).forEach(clave => {
   td.classList.add('td-btn');
 
   let botonE = document.createElement("button");
+  
   botonE.innerText="edit";  
 
-  botonE.id=posicion; 
+  //botonE.id=posicion; 
 
   botonE.classList.add('button');
   botonE.classList.add('button1');
@@ -78,35 +91,42 @@ Object.keys(vehiculos[posicion]).forEach(clave => {
         inputAgeEl.value=vehiculos[posicion].age;
         inputKilometrajeEl.value=vehiculos[posicion].kilometraje;      
         inputCombustibleEl.value=vehiculos[posicion].combustible;
-
-        //debugger;
-
-       //TENGO QUE SEGUIR ACA, ESTOY EN LA PARTE QUE TENGO QUE RECUPERAR LA FILA DE LA TABLA
-       // Y ASIGNARLE LOS VALORES QUE MODIFICO
-         
-       ///   BORRAR TABLA 
-
-       // LLENARLA CON EL VECTOR MODIFICADO
-
-       //vehiculos[posicion]['marca']=inputMarcaEl.value;     
-
+     
         showModal();
 
-     });
+     });   // FIN EVENTLISTENNER
  
   let botonD = document.createElement("button");
 
-  botonD.id=posicion;
+  //botonD.id=posicion;
+  botonD.id=fila.id;
 
   botonD.innerText="delete";
 
   botonD.classList.add('button');
   botonD.classList.add('button3');
 
-  botonD.addEventListener("click", () => {
+  botonD.addEventListener("click", (ev) => {
+
+    ev.preventDefault();
     //alert("el boton tiene el id :"+posicion);
-    borrarFila(posicion);
-  });
+    
+    //borrarFila(posicion);
+
+    // borrar el vehiculo, que tenga el id que se pasa como parametro
+    //let resultado=borrarVehiculo(vehiculos,parseInt(fila.id));
+    //vehiculos=resultado;
+
+    vehiculos=[...borrarVehiculo(vehiculos,parseInt(fila.id))];
+ 
+
+     borrarElementosTabla();
+  
+     crearCuerpoTabla(vehiculos,tbodyEl);
+  
+     console.table(vehiculos);
+
+  });  //FIN LISTENNER BOTON BORRAR
   
   td.appendChild(botonE);
   td.appendChild(botonD);
@@ -147,11 +167,11 @@ let crearEncabezadoTabla = (vehiculo,tabla) => {
 
 let crearCuerpoTabla = (vehiculos,tbodyEl) => {
 // i es la posicion del vector, que se pasa como parametro en la funcion crearFila
+  console.log("long del vector vehiculos dentro de la funcion crearCuerpoTabla :"+vehiculos.length);
   for (let i = 0; i < vehiculos.length; i++) {
-    crearFila(vehiculos,tbodyEl,i); //paso i como parámetro porque es la posicion en el array
-     
-}
-
+    crearFila(tbodyEl,i); //paso i como parámetro porque es la posicion en el array
+  }
+  console.log("long del vector vehiculos despuesde crear todas las filas luego del borrado :"+vehiculos.length);
 }
 
 /********************************************************* **/
@@ -226,6 +246,7 @@ let borrarElementosTabla = () => {
                                                 vehiculosAGnc = vehiculos.filter(auto => 
                                                     auto.combustible=="gnc");
                                                  borrarElementosTabla();
+                                                 console.table(vehiculosAGnc);
                                                  crearCuerpoTabla(vehiculosAGnc,document.getElementById("bodyMiTabla"));
                                                  
                                                  });
@@ -247,16 +268,16 @@ let borrarElementosTabla = () => {
 
 /* Se muestra el modal cuando finaliza la compra */
 function showModal() {
-  
-
- overlayEl.classList.remove('display-none');
+   overlayEl.classList.remove('display-none');
 }
 
 /* Aca tengo el manejador del evento click */
-btnAddVehiculoEl.addEventListener('click', (ev) => {
-    ev.preventDefault();
-
+btnAddVehiculoEl.addEventListener('click', () => {
+    //ev.preventDefault();
+    posicionAeditar=-1; 
     clearInputs();
+    console.log("En el listener de add");
+    console.table(vehiculos)
      
     showModal();
 })
@@ -265,76 +286,81 @@ btnAddVehiculoEl.addEventListener('click', (ev) => {
 
 /* eventos de los botones del modal */
 
-btnAceptarAgregarVehiculo.addEventListener("click", () => {
-
-  
- //creo el objeto vehiculo
-  let vehiculo= {
-      marca: inputMarcaEl.value,
-      modelo: inputModeloEl.value,
-      age: inputAgeEl.value,
-     // : inputColorElcolor.options[inputColorEl.selectedIndex].value,
-      color: inputColorEl.value,
-      kilometraje: inputKilometrajeEl.value,
-     // combustible: inputCombustibleEl.options[inputCombustibleEl.selectedIndex].value,
-      combustible: inputCombustibleEl.value, 
-      precio: inputPrecioEl.value,
-    }
+let validacionCorrectaInputs = (marcaI,modeloI,ageI,colorI,kilometrajeI,combustibleI,precioI) => {
  
- //agrego el vehiculo al arreglo de objetos vehiculo
- 
- // console.log(vehiculos); 
+  let valida=true;
 
- let tbodyEl=document.getElementById("bodyMiTabla");
+  if (modeloI=="" || kilometrajeI=="" || precioI=="" || marcaI=="none" || ageI=="" || colorI=="none" || combustibleI=="none")
+      valida=false;
 
-if (posicionAeditar==-1) {   // AGREGAR FILA
-  
-  vehiculos.push(vehiculo);
-  
-  let posicionFinal=vehiculos.length -1 ;
-
-  crearFila(vehiculos,tbodyEl,posicionFinal);
-
-} else {  // en este caso estaría editando una fila
-  
- vehiculos[posicionAeditar].marca=inputMarcaEl.value;
- vehiculos[posicionAeditar].modelo=inputModeloEl.value;
- vehiculos[posicionAeditar].age=inputAgeEl.value;
- vehiculos[posicionAeditar].color=inputColorEl.value;
- vehiculos[posicionAeditar].kilometraje=inputKilometrajeEl.value;
- vehiculos[posicionAeditar].combustible=inputCombustibleEl.value;
- vehiculos[posicionAeditar].precio=inputPrecioEl.value;
-
- borrarElementosTabla();
-debugger;
- crearCuerpoTabla(vehiculos,tbodyEl);
- 
-
- //console.log(vehiculos);
-
- /////////////////////
-/*
- inputMarcaEl.value=vehiculo['marca'];
- inputModeloEl.value=vehiculo['modelo'];
- inputColorEl.value=vehiculo['color'];
- inputPrecioEl.value=vehiculo['precio'];
- inputAgeEl.value=vehiculo['age'];
- inputKilometrajeEl.value=vehiculo['kilometraje'];      
- inputCombustibleEl.value=vehiculo['combustible'];
- */
- //////////////////////
-    
+  return valida;   
 
 }
 
 
-  overlayEl.classList.add('display-none');
 
+btnAceptarAgregarVehiculo.addEventListener("click", () => {
+  
+//console.log("En el comienzo del listener de aceptar " + vehiculos.length);
 
-  // ATENCION : DEBE VALIDARSE QUE NO SE INGRESE UN VEHICULO EN LA TABLA
-  // SOLO PULSANDO ACEPTAR EN EL OVERLAY
+ let marcaI= inputMarcaEl.value;
+ let modeloI= inputModeloEl.value;
+ let ageI= inputAgeEl.value;
+ let colorI= inputColorEl.value;
+ let kilometrajeI= inputKilometrajeEl.value;
+ let combustibleI= inputCombustibleEl.value;
+ let precioI= inputPrecioEl.value;
+ 
+ if (validacionCorrectaInputs(marcaI,modeloI,ageI,colorI,kilometrajeI,combustibleI,precioI)) {
+ 
+      //creo el objeto vehiculo
+        let vehiculo= {
+            id: idGral , 
+            marca: inputMarcaEl.value,
+            modelo: inputModeloEl.value,
+            age: inputAgeEl.value,
+            color: inputColorEl.value,
+            kilometraje: inputKilometrajeEl.value,
+            combustible: inputCombustibleEl.value, 
+            precio: inputPrecioEl.value,
+          }
+      idGral=idGral+1;
+      //agrego el vehiculo al arreglo de objetos vehiculo
 
-  });   
+      let tbodyEl=document.getElementById("bodyMiTabla");
+
+      if (posicionAeditar==-1) {   // AGREGAR FILA AL FINAL
+        
+              vehiculos.push(vehiculo);
+              console.table(vehiculos);
+              let posicionFinal=vehiculos.length -1 ;
+           
+              //crearFila(vehiculos,tbodyEl,posicionFinal);
+              borrarElementosTabla();
+
+              crearCuerpoTabla(vehiculos,tbodyEl);
+
+      } else {  // EDITAR UNA FILA
+              console.log("la posicion a editar es :"+posicionAeditar);
+              vehiculos[posicionAeditar].marca=inputMarcaEl.value;
+              vehiculos[posicionAeditar].modelo=inputModeloEl.value;
+              vehiculos[posicionAeditar].age=inputAgeEl.value;
+              vehiculos[posicionAeditar].color=inputColorEl.value;
+              vehiculos[posicionAeditar].kilometraje=inputKilometrajeEl.value;
+              vehiculos[posicionAeditar].combustible=inputCombustibleEl.value;
+              vehiculos[posicionAeditar].precio=inputPrecioEl.value;
+
+              borrarElementosTabla();
+
+              crearCuerpoTabla(vehiculos,tbodyEl);
+        }
+  
+        overlayEl.classList.add('display-none');
+
+   }   // IF DE LA VALIDACION
+else  // SI HAY CAMPOS INVALIDOS EN EL OVERLAY
+      alert("Existe al menos un Campo Inválido !");
+  });   // CIERRE DEL ADDEVENLISTENNER
 
 btnCancelarAgregarVehiculo.addEventListener("click", () => {
   //clearInputs();
@@ -352,7 +378,6 @@ function clearInputs()  {
   inputPrecioEl.value='';
   
 }
-
 
 
 

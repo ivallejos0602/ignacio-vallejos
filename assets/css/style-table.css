@@ -162,7 +162,9 @@ tr:nth-child(even) {
 estilos del modal para agregar, editar filas, asi como también eliminar
 */
 .overlay {
-  position: absolute;
+  
+  /*position: absolute;*/
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;

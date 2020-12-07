@@ -1,6 +1,7 @@
 let vehiculos = [
 
-    {
+   {
+      id: 0,
       marca: "Chevrolet",
       modelo: "Meriva",
       age: "2012",
@@ -11,6 +12,7 @@ let vehiculos = [
     },
   
     {
+      id: 1,
       marca: "Renault",
       modelo: "Logan Intense",
       age: "2019",
@@ -21,6 +23,7 @@ let vehiculos = [
     },
   
     {
+      id: 2,
       marca: "Ford",
       modelo: "Ka sel",
       age: "2018",
@@ -31,6 +34,7 @@ let vehiculos = [
     },
   
     {
+      id: 3,
       marca: "Ford",
       modelo: "Fiesta Kinetic",
       age: "2015",
@@ -41,6 +45,7 @@ let vehiculos = [
     },
   
     {
+      id: 4,
       marca: "Ford",
       modelo: "Focus",
       age: "2017",
@@ -51,6 +56,7 @@ let vehiculos = [
     },
   
     {
+      id: 5,
       marca: "Toyota",
       modelo: "Corolla",
       age: "2013",
@@ -61,6 +67,7 @@ let vehiculos = [
     },
   
     {
+      id: 6,
       marca: "Renault",
       modelo: "Kwid",
       age: "2019",
@@ -71,6 +78,7 @@ let vehiculos = [
     },
   
     {
+      id: 7,
       marca: "Ford",
       modelo: "EcoSport",
       age: "2011",
