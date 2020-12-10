@@ -183,10 +183,11 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   visibility: hidden;
 }
 
-.modal {
+.modalMo {
   width: 50%;
   height: auto;
 }
+
 
 .card {
   width: 40%;
@@ -201,13 +202,3 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   color: black;
   width: 100%;
 }
-
-
-
-
-  
-
-
-
-
-

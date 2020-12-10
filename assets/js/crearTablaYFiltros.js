@@ -1,13 +1,18 @@
 
 let idGral=vehiculos.length;  // ESTA VARIABLE SIRVE PARA GENERAR IDENTIFICADORES DE VEHICULOS
 
+//ELEMENTOS DE LA TABLA - DEFINICION DEL CUERPO DE TABLA
+let tbodyEl=document.createElement("tbody");
+tbodyEl.id = "bodyMiTabla";
+
 let divContenedor = document.getElementById("div-contenedor");
 let btnAddVehiculoEl=document.getElementById("btnAddVehiculo");
-let overlayEl = document.getElementsByClassName('overlay')[0];
+let overlayEl = document.getElementsByClassName('overlay')[0];   //overlay del input de carga y edicion
 let radNaftaEl = document.getElementById("nafta");
 let radGncEl = document.getElementById("gnc");
 let radDieselEl = document.getElementById("diesel");
 let radAllEl = document.getElementById("all");
+//let ConfirmEl = document.getElementsByClassName('overlay')[0];
 
 
 
@@ -22,9 +27,12 @@ let inputColorEl=document.getElementById("inputColor");
 let inputCombustibleEl=document.getElementById("inputCombustible");
 let inputPrecioEl=document.getElementById("inputPrecio");
 
-/* botones de aceptar - cancelar del modal*/
+let btnModalBorrarEl=document.getElementById("btn-modal-borrar");
+
 
 /****************************/
+
+let posicionABorrar; // en el listenner del botón Borrar cuando se crea la fila, se seteará está variable
 
 let posicionAeditar=-1;   // esta variable es para discernir en el botón aceptar si el aceptar
                     // es por agregar una fila mas en la tabla, o false en caso que edite una fila  
@@ -39,7 +47,6 @@ let borrarVehiculo = (vehiculos,idVehiculo) => {
 
   resultado=vehiculos.filter(vehiculo => vehiculo.id !== idVehiculo);
    
-  //console.log("sin el elemento borrado"+resultado);
   return resultado;
 
 }
@@ -95,11 +102,18 @@ Object.keys(vehiculos[posicion]).forEach(clave => {
         showModal();
 
      });   // FIN EVENTLISTENNER
- 
-  let botonD = document.createElement("button");
 
-  //botonD.id=posicion;
-  botonD.id=fila.id;
+   // CREO EL BOTON DE BORRADO DE LA FILA
+  let botonD = document.createElement("button");
+  botonD.setAttribute("type","button");
+
+  /*
+  botonD.classList.add('btn');
+  botonD.classList.add('btn-primary');
+  */
+ 
+  botonD.setAttribute("data-toggle","modal");
+  botonD.setAttribute("data-target","#myConfirmAction");
 
   botonD.innerText="delete";
 
@@ -109,24 +123,24 @@ Object.keys(vehiculos[posicion]).forEach(clave => {
   botonD.addEventListener("click", (ev) => {
 
     ev.preventDefault();
-    //alert("el boton tiene el id :"+posicion);
-    
-    //borrarFila(posicion);
+    debugger;
+    posicionABorrar=posicion;  // SETEA LA POSICION DE LA FILA A BORRAR
 
-    // borrar el vehiculo, que tenga el id que se pasa como parametro
-    //let resultado=borrarVehiculo(vehiculos,parseInt(fila.id));
-    //vehiculos=resultado;
+    console.log("borrar posicion :"+posicionABorrar);
+
+    /*
 
     vehiculos=[...borrarVehiculo(vehiculos,parseInt(fila.id))];
  
-
-     borrarElementosTabla();
+    borrarElementosTabla();
   
      crearCuerpoTabla(vehiculos,tbodyEl);
-  
-     console.table(vehiculos);
 
+    */ 
+  
+     
   });  //FIN LISTENNER BOTON BORRAR
+
   
   td.appendChild(botonE);
   td.appendChild(botonD);
@@ -136,6 +150,18 @@ Object.keys(vehiculos[posicion]).forEach(clave => {
 tbodyEl.appendChild(fila);
 
 }
+
+
+btnModalBorrarEl.addEventListener("click", (ev) => {
+
+    vehiculos=vehiculos.filter((vehiculo,indice) => indice != posicionABorrar);
+ 
+    borrarElementosTabla();
+  
+     crearCuerpoTabla(vehiculos);
+
+     $('#myConfirmAction').modal('hide');
+});
 
 /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* funcion para crear los elementos th en la tabla */
@@ -165,26 +191,26 @@ let crearEncabezadoTabla = (vehiculo,tabla) => {
 
  /******************************************************** */
 
-let crearCuerpoTabla = (vehiculos,tbodyEl) => {
+let crearCuerpoTabla = (mobilidades) => {
 // i es la posicion del vector, que se pasa como parametro en la funcion crearFila
-  console.log("long del vector vehiculos dentro de la funcion crearCuerpoTabla :"+vehiculos.length);
-  for (let i = 0; i < vehiculos.length; i++) {
+  
+  for (let i = 0; i < mobilidades.length; i++) {
     crearFila(tbodyEl,i); //paso i como parámetro porque es la posicion en el array
   }
-  console.log("long del vector vehiculos despuesde crear todas las filas luego del borrado :"+vehiculos.length);
+  
 }
 
 /********************************************************* **/
 
 let crearTabla = (vehiculos,tabla) => {
 
-let tbodyEl=document.createElement("tbody");
+//let tbodyEl=document.createElement("tbody");
   
-tbodyEl.id = "bodyMiTabla";
+//tbodyEl.id = "bodyMiTabla";
 
  crearEncabezadoTabla(vehiculos[0],tabla);
 
-  crearCuerpoTabla(vehiculos,tbodyEl);
+  crearCuerpoTabla(vehiculos);
 
   tabla.appendChild(tbodyEl);
 
@@ -198,10 +224,6 @@ tbodyEl.id = "bodyMiTabla";
 window.addEventListener("load", () => {
        crearTabla(vehiculos,tabla);
 });
-
-/*
-btnFilterEl.addEventListener("click", () => { positiveArray = numsArray.filter((n) => n > 0);
-*/
 
 let borrarElementos = (elementos) => {
 
@@ -238,7 +260,8 @@ let borrarElementosTabla = () => {
                                               vehiculosANafta = vehiculos.filter(auto => 
                                                  auto.combustible=="nafta");
                                               borrarElementosTabla();
-                                              crearCuerpoTabla(vehiculosANafta,document.getElementById("bodyMiTabla"));
+                                              console.table(vehiculosANafta );
+                                              crearCuerpoTabla(vehiculosANafta);
                                               
                                                });
  
@@ -247,26 +270,26 @@ let borrarElementosTabla = () => {
                                                     auto.combustible=="gnc");
                                                  borrarElementosTabla();
                                                  console.table(vehiculosAGnc);
-                                                 crearCuerpoTabla(vehiculosAGnc,document.getElementById("bodyMiTabla"));
+                                                 crearCuerpoTabla(vehiculosAGnc);
                                                  
                                                  });
     radDieselEl.addEventListener("click", () => {
                                                   vehiculosADiesel = vehiculos.filter(auto => 
                                                   auto.combustible=="diesel");
                                                   borrarElementosTabla();
-                                                  crearCuerpoTabla(vehiculosADiesel,document.getElementById("bodyMiTabla"));
+                                                  crearCuerpoTabla(vehiculosADiesel);
                                                    });   
                                                    
     radAllEl.addEventListener("click", () =>  {
                                                  // console.log("arreglo backup:"+vehiculosBak);
                                                   borrarElementosTabla();
-                                                  crearCuerpoTabla(vehiculos,document.getElementById("bodyMiTabla"));
+                                                  crearCuerpoTabla(vehiculos);
                                                    } );                                               
                                               
 
 /*********************************************** */
 
-/* Se muestra el modal cuando finaliza la compra */
+
 function showModal() {
    overlayEl.classList.remove('display-none');
 }
@@ -276,9 +299,6 @@ btnAddVehiculoEl.addEventListener('click', () => {
     //ev.preventDefault();
     posicionAeditar=-1; 
     clearInputs();
-    console.log("En el listener de add");
-    console.table(vehiculos)
-     
     showModal();
 })
 
@@ -297,12 +317,8 @@ let validacionCorrectaInputs = (marcaI,modeloI,ageI,colorI,kilometrajeI,combusti
 
 }
 
-
-
 btnAceptarAgregarVehiculo.addEventListener("click", () => {
   
-//console.log("En el comienzo del listener de aceptar " + vehiculos.length);
-
  let marcaI= inputMarcaEl.value;
  let modeloI= inputModeloEl.value;
  let ageI= inputAgeEl.value;
@@ -338,10 +354,10 @@ btnAceptarAgregarVehiculo.addEventListener("click", () => {
               //crearFila(vehiculos,tbodyEl,posicionFinal);
               borrarElementosTabla();
 
-              crearCuerpoTabla(vehiculos,tbodyEl);
+              crearCuerpoTabla(vehiculos);
 
       } else {  // EDITAR UNA FILA
-              console.log("la posicion a editar es :"+posicionAeditar);
+             
               vehiculos[posicionAeditar].marca=inputMarcaEl.value;
               vehiculos[posicionAeditar].modelo=inputModeloEl.value;
               vehiculos[posicionAeditar].age=inputAgeEl.value;
@@ -352,7 +368,7 @@ btnAceptarAgregarVehiculo.addEventListener("click", () => {
 
               borrarElementosTabla();
 
-              crearCuerpoTabla(vehiculos,tbodyEl);
+              crearCuerpoTabla(vehiculos);
         }
   
         overlayEl.classList.add('display-none');
@@ -360,7 +376,9 @@ btnAceptarAgregarVehiculo.addEventListener("click", () => {
    }   // IF DE LA VALIDACION
 else  // SI HAY CAMPOS INVALIDOS EN EL OVERLAY
       alert("Existe al menos un Campo Inválido !");
-  });   // CIERRE DEL ADDEVENLISTENNER
+  });   // CIERRE DEL ADDEVENLISTENNER 
+
+ 
 
 btnCancelarAgregarVehiculo.addEventListener("click", () => {
   //clearInputs();
@@ -379,9 +397,30 @@ function clearInputs()  {
   
 }
 
+// FUNCION PARA EL MODAL DE CONFIRMACION DE UNA ACCION
 
+/*
+function confirmAgregarVehiculo() {
+  var txt;
+  var r = confirm("Press a button!");
+  if (r == true) {
+    txt = "You pressed OK!";
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  console.log("ACCION CONFIRMADA --> "+txt);
+  alert(txt);
+  
+}
+*/
 
-
+/*
+btnConfirmAceptar.addEventListener("click", () => {
+  //clearInputs();
+  overlayConfirmEl.classList.add('display-none');
+        
+      });  
+*/
 
 
 

@@ -1,11 +1,10 @@
 /* Se muestra el modal cuando finaliza la compra */
+/*
 function showModal() {
-    /*
-    totalPriceEl.innerText = price;
-    */
-    console.log("llamado a la funcion showModal()"); 
+      console.log("llamado a la funcion showModal()"); 
     overlayEl.classList.remove('display-none');
 }
+*/
 
 /* Se limpian los inputs luego de agregar el producto, 
 sencillamente cambiamos el value de precio y cantidad

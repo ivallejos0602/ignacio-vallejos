@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style-table.css">
+
+    <!--<link href="./assets/bootstrap-4.5.2-dist/css/bootstrap.min.css" rel="stylesheet">-->
+      <!--<link href="./assets/css/all.min.css" rel="stylesheet">-->
+      <link href="../bootstrap-4.5.2-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../css/all.min.css" rel="stylesheet">
     <title>Oportunidades</title>
 </head>
 <body>
@@ -35,7 +40,8 @@
 
 <div class="overlay display-none">
 <!-- modal -->
-    <div class="modal">
+    <div class="modalMo">
+    
     <!-- card -->
         <div class="card card-total">
                <!-- código del formulario para cargar la tabla-->
@@ -128,11 +134,42 @@
 
         </div>
     </div>
-</div>
-    <script type="text/javascript" src="../js/datosParaTabla.js"></script>
-    <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
+</div>   <!-- FINAL OVERLAY INPUT ALTA O EDICION -->
+
+     
+  <!-- Modal -->
+
+        <div class="modal" id="myConfirmAction" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"> <!--a partir de aca es el original-->
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Borrar una Fila.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿ Confirma Borrar una Fila ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-modal-cancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="btn-modal-borrar" type="button" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+     <!--------------------------------------------------------->
+     <script type="text/javascript" src="../js/datosParaTabla.js"></script>
+     <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="../bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+ <!--  <script src="./assets/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>  -->
     
-    
-   </body>
+
+
+ </body>
+
+ 
 </html>
 
