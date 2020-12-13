@@ -40,46 +40,46 @@
 
 <div class="overlay display-none">
 <!-- modal -->
-    <div class="modalMo">
-    
-    <!-- card -->
+    <div class="modalEdicion">
+       <!-- card -->
         <div class="card card-total">
                <!-- código del formulario para cargar la tabla-->
              
              <div> 
                  <h3>Agregar Nuevo Vehiculo</h3><br>    
              </div>
-
-             <div>
+        <form id="formInputVehiculo">     
+             <div class="bloque-input">
                 <label for="cars">Marca:   </label>
-                    <select id="inputMarca" name="cars">
-                        <option value="none">none</option>
+                    <select id="inputMarca" name="cars" required>
+                      <!--  <option value="none">none</option>-->
                         <option value="Chevrolet">Chevrolet</option>
                         <option value="Renault">Renault</option>
                         <option value="Ford">Ford</option>
                         <option value="Toyota">Toyota</option>
                     </select>
-                <br><br>
+                
             </div>   
            
-            <div>
-                <label for="modelo">Modelo:</label><br>
-                    <input type="text" id="inputModelo" name="modelo" value=''><br><br>
-            </div>    
-            
-            <div>
-                <label for="kilometraje">Kilometraje:</label><br>
-                    <input type="text" id="inputKilometraje" name="kilometraje" value=''><br><br>
+            <div class="bloque-input">
+                <label for="modelo">Modelo:</label>
+                    <input type="text" id="inputModelo" name="modelo" value='' required>
             </div>    
 
-            <div>
-                <label for="precio">Precio:</label><br>
-                    <input type="text" id="inputPrecio" name="precio" value=''><br><br>
+            
+            <div class="bloque-input">
+                <label for="kilometraje">Kilometraje:</label>
+                    <input type="text" id="inputKilometraje" name="kilometraje" value='' required >
+            </div>    
+
+            <div class="bloque-input">
+                <label for="precio">Precio:</label>
+                    <input type="text" id="inputPrecio" name="precio" value='' required>
             </div>        
               
-            <div>
+            <div class="bloque-input">
                 <label for="age">Año:</label>
-                    <select id="inputAge" name="age">
+                    <select id="inputAge" name="age" required>
                             <option value="2010">2010</option>
                             <option value="2011">2011</option>
                             <option value="2012">2012</option>
@@ -92,13 +92,13 @@
                             <option value="2019">2019</option>
                             <option value="2020">2020</option>                
                     </select>
-              <br><br>
+                    
             </div>  
             
-            <div>
+            <div class="bloque-input">
               <label for="color">Color:</label>
-                    <select id="inputColor" name="color">
-                            <option value="none">none</option>
+                    <select id="inputColor" name="color" required>
+                           <!-- <option value="none">none</option>-->
                             <option value="Negro">Negro</option>
                             <option value="Azul">Azul</option>
                             <option value="Ocre">Ocre</option>
@@ -109,29 +109,27 @@
                             <option value="Blanco Esmeralda">Blanco Esmeralda</option>
                             <option value="Gris Oscuro">Gris Oscuro</option>
                     </select>
-              <br><br>
             </div>
 
-            <div>
+            <div class="bloque-input>
                     <label for="combustible">Combustible</label>
-                            <select id="inputCombustible" name="combustible">
-                                    <option value="none">none</option> 
+                            <select id="inputCombustible" name="combustible" required>
+                                    <!--<option value="none">none</option> -->
                                     <option value="gnc">gnc</option>
                                     <option value="diesel">diesel</option>
                                     <option value="nafta">nafta</option>
                             </select>
-                    <br><br>
-            </div>    
-
-            <div class="div-modal-btn">
+            </div>   
+            
+            <div class="bloque-input-btn">
                 <div>
-                    <button  id="btnAceptarAgregarVehiculo">Aceptar</button>
+                    <button type="submit" id="btnAceptarAgregarVehiculo">Aceptar</button>
                 </div>
                 <div>
                     <button  id="btnCancelarAgregarVehiculo">Cancelar</button>
                 </div>
             </div>    
-
+        </form>
         </div>
     </div>
 </div>   <!-- FINAL OVERLAY INPUT ALTA O EDICION -->
@@ -143,10 +141,7 @@
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title">Borrar una Fila.</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title">Borrar una Fila.</h5>
                 </div>
                 <div class="modal-body">
                     <p>¿ Confirma Borrar una Fila ?</p>
@@ -158,18 +153,43 @@
             </div>
             </div>
         </div>
-
+                  
+          <!-- Modal que se usará para la Progress Bar  -->
+          <div class="modal fade" id="progressBarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title"> Procesando Fila...</h2>
+                </div>
+                <div class="modal-body">
+                    <!--Progress Bar-->
+                            <div class="container">
+                                <div class="progress">
+                                   <!-- <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%">-->
+                                    <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">   
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                    <!---->
+                </div>
+             </div>
+              </div>
+            </div>
+          </div>     
+          <!--
+          <div class="alert alert-danger" role="alert">
+            This is a danger alert—check it out!
+          </div>
+           -->
      <!--------------------------------------------------------->
+     <script type="text/javascript" src="../js/elements.js"></script>
      <script type="text/javascript" src="../js/datosParaTabla.js"></script>
      <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
      <script src="../bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
- <!--  <script src="./assets/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>  -->
-    
-
 
  </body>
-
  
 </html>
 

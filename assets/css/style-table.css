@@ -1,3 +1,15 @@
+.bloque-input{
+              margin: 10px 0px;
+              }
+
+.bloque-input-btn{
+                padding:10px 0px;
+                margin: 20px 0px;
+                display:flex;
+                justify-content: space-around;
+                background-color: rgb(107, 162, 224);
+                }
+
 
 #div-contenedor {
     
@@ -17,12 +29,6 @@
   justify-content: space-around;
   background-color: aquamarine;
  
-}
-
-.div-modal-btn{
-   display:flex;
-   justify-content: space-around;
-
 }
 
 h1, h3 {
@@ -117,29 +123,6 @@ tr:nth-child(even) {
     color: white;
   }
 
- 
-  
-  /*
-  .button4 {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-  }
-  
-  .button4:hover {background-color: #e7e7e7;}
-  
-  .button5 {
-    background-color: white;
-    color: black;
-    border: 2px solid #555555;
-  }
-  
-  .button5:hover {
-    background-color: #555555;
-    color: white;
-  }
-
-  */
 
   /*****************************************************/
 
@@ -183,8 +166,8 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   visibility: hidden;
 }
 
-.modalMo {
-  width: 50%;
+.modalEdicion {
+  width: 30%;
   height: auto;
 }
 
