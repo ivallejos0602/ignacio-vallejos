@@ -1,85 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/style-table.css">
+    <link rel="stylesheet" href="../css/toogle-btn-style.css">
 
     <!--<link href="./assets/bootstrap-4.5.2-dist/css/bootstrap.min.css" rel="stylesheet">-->
-      <!--<link href="./assets/css/all.min.css" rel="stylesheet">-->
-      <link href="../bootstrap-4.5.2-dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="../css/all.min.css" rel="stylesheet">
+    <!--<link href="./assets/css/all.min.css" rel="stylesheet">-->
+    <link href="../bootstrap-4.5.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/all.min.css" rel="stylesheet">
     <title>Oportunidades</title>
 </head>
+
 <body>
-    <div class="header-seccion-t">
-        <h2>Vehiculos en Venta. Sólo pueden operar con estos vehiculos los vendedores autorizados por la concesionaria.</h2>
+    <div class="container-fluid bg-barra-blue">
+        <div class="row">
+            <h2 class="header-seccion-t fuente-tabla-color">Vehiculos en Venta. Sólo pueden operar con estos vehiculos los vendedores
+                autorizados por la concesionaria.</h2>
+        </div>
+       <!-- <div class="row padd-20" id="div-btn-agregar-vehiculo">-->
+        <div class="row padd-20">
+            <div class="col-3"></div>
+            <div class="col-6"> 
+                <button type="button" id="btnAddVehiculo" class="btn btn-primary btn-lg btn-block">Agregar Nuevo
+                    Vehiculo</button>
+                <!--<button id="btnAddVehiculo" class="button button2">Agregar Nuevo Vehiculo</button>-->
+            </div>
+            <div class="col-3"></div>
+        </div>    
+     <!-- </div>-->
+      <div class="row  bg-color-filtro fuente-tabla-color fuente-filtro" id="div-filtros">
+            <div class="col-1 bg-barra-blue"></div>
+            <div class="col-2">
+                <div class="outerDivFull" >
+                    <div class="switchToggle">
+                        <input type="checkbox" id="switch">
+                        <label for="switch">Toggle</label>
+                    </div>
+                </div>
+           </div>
+            <div class="col-4">
+                <p class="fuente-filtro p-filtro-align">Tipo de combustible  :</p>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="nafta" name="combustible" value="nafta">
+                <label for="nafta"> Nafta</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="gnc" name="combustible" value="gnc">
+                <label for="gnc"> Gnc</label>
+            </div>    
+            <div class="col-1">
+                <input type="radio" id="diesel" name="combustible" value="diesel">
+                <label for="diesel"> Diesel</label>
+            </div>    
+            <div class="col-1">
+                <input type="radio" id="all" name="combustible" value="all">
+                <label for="all"> all</label>
+            </div>
+            <div class="col-1 bg-barra-blue"></div>
+          <!--  <div class="col-1 bg-barra-blue"></div>-->
     </div>
-    <div id="div-btn-agregar-vehiculo">
-        <button id="btnAddVehiculo" class="button button2">Agregar Nuevo Vehiculo</button>
-    </div>    
-    <div id="div-contenedor"></div>
 
-   <div id="div-filtros"> 
-        <p>Aplicar Un filtro por tipo de combustible a la tabla :</p> 
-        
-        <input type="radio" id="nafta" name="combustible" value="nafta">
-        <label for="nafta"> Nafta</label><br>
-        <input type="radio" id="gnc" name="combustible" value="gnc">
-        <label for="gnc"> Gnc</label><br>
-        <input type="radio" id="diesel" name="combustible" value="diesel">
-        <label for="diesel"> Diesel</label><br>
-        <input type="radio" id="all" name="combustible" value="all">
-        <label for="all"> all</label>
-</div>
+      <!--  <div class="container ">-->
+            <div class="row">
+                <div class="col-1 bg-barra-blue"></div>
+                <div class="col-10">
+                    <table class="table" id="MiTabla"></table>
+                </div>
+                <div class="col-1 bg-barra-blue"></div>
+            </div>
+        <!--</div>-->
 
-<!--codigo para editar y borrar filas de la tabla
-* asi como crear una nueva fila en la tabla
--->                                                  
+    </div>
+
+    <div class="overlay display-none">
+        <!-- modal -->
+        <div class="modalEdicion">
+            <!-- card -->
+            <div class="card card-total">
+                <!-- código del formulario para cargar la tabla-->
+
+                <div>
+                    <h3>Agregar Nuevo Vehiculo</h3><br>
+                </div>
+                <form id="formInputVehiculo" autocomplete="off">
+                    <div class="bloque-input">
+                        <label for="cars">Marca: </label>
+                        <select id="inputMarca" name="cars" required>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Renault">Renault</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Toyota">Toyota</option>
+                        </select>
+
+                    </div>
+
+                    <div class="bloque-input">
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="inputModelo" name="modelo" value='' required>
+                    </div>
 
 
-<div class="overlay display-none">
-<!-- modal -->
-    <div class="modalEdicion">
-       <!-- card -->
-        <div class="card card-total">
-               <!-- código del formulario para cargar la tabla-->
-             
-             <div> 
-                 <h3>Agregar Nuevo Vehiculo</h3><br>    
-             </div>
-        <form id="formInputVehiculo">     
-             <div class="bloque-input">
-                <label for="cars">Marca:   </label>
-                    <select id="inputMarca" name="cars" required>
-                      <!--  <option value="none">none</option>-->
-                        <option value="Chevrolet">Chevrolet</option>
-                        <option value="Renault">Renault</option>
-                        <option value="Ford">Ford</option>
-                        <option value="Toyota">Toyota</option>
-                    </select>
-                
-            </div>   
-           
-            <div class="bloque-input">
-                <label for="modelo">Modelo:</label>
-                    <input type="text" id="inputModelo" name="modelo" value='' required>
-            </div>    
+                    <div class="bloque-input">
+                        <label for="kilometraje">Kilometraje:</label>
+                        <input type="text" id="inputKilometraje" name="kilometraje" value='' required>
+                    </div>
 
-            
-            <div class="bloque-input">
-                <label for="kilometraje">Kilometraje:</label>
-                    <input type="text" id="inputKilometraje" name="kilometraje" value='' required >
-            </div>    
+                    <div class="bloque-input">
+                        <label for="precio">Precio:</label>
+                        <input type="text" id="inputPrecio" name="precio" value='' required>
+                    </div>
 
-            <div class="bloque-input">
-                <label for="precio">Precio:</label>
-                    <input type="text" id="inputPrecio" name="precio" value='' required>
-            </div>        
-              
-            <div class="bloque-input">
-                <label for="age">Año:</label>
-                    <select id="inputAge" name="age" required>
+                    <div class="bloque-input">
+                        <label for="age">Año:</label>
+                        <select id="inputAge" name="age" required>
                             <option value="2010">2010</option>
                             <option value="2011">2011</option>
                             <option value="2012">2012</option>
@@ -90,15 +128,15 @@
                             <option value="2017">2017</option>
                             <option value="2018">2018</option>
                             <option value="2019">2019</option>
-                            <option value="2020">2020</option>                
-                    </select>
-                    
-            </div>  
-            
-            <div class="bloque-input">
-              <label for="color">Color:</label>
-                    <select id="inputColor" name="color" required>
-                           <!-- <option value="none">none</option>-->
+                            <option value="2020">2020</option>
+                        </select>
+
+                    </div>
+
+                    <div class="bloque-input">
+                        <label for="color">Color:</label>
+                        <select id="inputColor" name="color" required>
+                            <!-- <option value="none">none</option>-->
                             <option value="Negro">Negro</option>
                             <option value="Azul">Azul</option>
                             <option value="Ocre">Ocre</option>
@@ -108,37 +146,38 @@
                             <option value="Blanco Perlado">Blanco Perlado</option>
                             <option value="Blanco Esmeralda">Blanco Esmeralda</option>
                             <option value="Gris Oscuro">Gris Oscuro</option>
-                    </select>
+                        </select>
+                    </div>
+
+                    <div class="bloque-input">
+                        <label for="combustible">Combustible</label>
+                        <select id="inputCombustible" name="combustible" required>
+                            <!--<option value="none">none</option> -->
+                            <option value="gnc">gnc</option>
+                            <option value="diesel">diesel</option>
+                            <option value="nafta">nafta</option>
+                        </select>
+                    </div>
+
+                    <div class="bloque-input-btn">
+                        <div>
+                            <button type="submit" id="btnAceptarAgregarVehiculo">Aceptar</button>
+                        </div>
+                        <div>
+                            <button type="button" id="btnCancelarAgregarVehiculo">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-            <div class="bloque-input>
-                    <label for="combustible">Combustible</label>
-                            <select id="inputCombustible" name="combustible" required>
-                                    <!--<option value="none">none</option> -->
-                                    <option value="gnc">gnc</option>
-                                    <option value="diesel">diesel</option>
-                                    <option value="nafta">nafta</option>
-                            </select>
-            </div>   
-            
-            <div class="bloque-input-btn">
-                <div>
-                    <button type="submit" id="btnAceptarAgregarVehiculo">Aceptar</button>
-                </div>
-                <div>
-                    <button  id="btnCancelarAgregarVehiculo">Cancelar</button>
-                </div>
-            </div>    
-        </form>
         </div>
-    </div>
-</div>   <!-- FINAL OVERLAY INPUT ALTA O EDICION -->
+    </div> <!-- FINAL OVERLAY INPUT ALTA O EDICION -->
 
-     
-  <!-- Modal -->
 
-        <div class="modal" id="myConfirmAction" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"> <!--a partir de aca es el original-->
-            <div class="modal-dialog" role="document">
+    <!-- Modal -->
+
+    <div class="modal" id="myConfirmAction" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <!--a partir de aca es el original-->
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Borrar una Fila.</h5>
@@ -147,49 +186,46 @@
                     <p>¿ Confirma Borrar una Fila ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-modal-cancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="btn-modal-cancelar" type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Cancelar</button>
                     <button id="btn-modal-borrar" type="button" class="btn btn-primary">Guardar Cambios</button>
                 </div>
             </div>
-            </div>
         </div>
-                  
-          <!-- Modal que se usará para la Progress Bar  -->
-          <div class="modal fade" id="progressBarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+    </div>
+
+    <!-- Modal que se usará para la Progress Bar  -->
+    <div class="modal fade" id="progressBarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h2 class="modal-title"> Procesando Fila...</h2>
+                    <h2 class="modal-title"> Procesando Fila...</h2>
                 </div>
                 <div class="modal-body">
                     <!--Progress Bar-->
-                            <div class="container">
-                                <div class="progress">
-                                   <!-- <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%">-->
-                                    <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">   
-                                        
-                                    </div>
-                                </div>
+                    <div class="container">
+                        <div class="progress">
+                            <!-- <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%">-->
+                            <div class="progress-bar" id="myProgressBar" role="progressbar" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100">
+
                             </div>
+                        </div>
+                    </div>
                     <!---->
                 </div>
-             </div>
-              </div>
             </div>
-          </div>     
-          <!--
-          <div class="alert alert-danger" role="alert">
-            This is a danger alert—check it out!
-          </div>
-           -->
-     <!--------------------------------------------------------->
-     <script type="text/javascript" src="../js/elements.js"></script>
-     <script type="text/javascript" src="../js/datosParaTabla.js"></script>
-     <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="../bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+        </div>
+    </div>
+    </div>
 
- </body>
- 
+    <script type="text/javascript" src="../js/elements.js"></script>
+    <script type="text/javascript" src="../js/datosParaTabla.js"></script>
+    <script type="text/javascript" src="../js/crearTablaYFiltros.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
 </html>
-

@@ -11,7 +11,7 @@
                 }
 
 
-#div-contenedor {
+.aacontenedor-tabla {
     
     display: flex;    
     justify-content: center;
@@ -20,15 +20,19 @@
     */
     /*
     height: 380px;
-    */
     background-color: pink;
+    */
+    
 }
 
-#div-btn-agregar-vehiculo {
+.padd-20{
+   padding: 20px;
+  /*
   display: flex;
   justify-content: space-around;
+  
   background-color: aquamarine;
- 
+    */
 }
 
 h1, h3 {
@@ -37,8 +41,11 @@ h1, h3 {
 
 table {
     font-family: arial, sans-serif;
+    font-size: 20px;
+    /*
     border-collapse: collapse;
     width: 85%;
+    */
   }
 
 td, th {
@@ -130,15 +137,14 @@ tr:nth-child(even) {
 
   .header-seccion-t {
     text-align: center;
-
+    font-size: 40px;
+    margin: 30px;
+    /*
     background-color: #4CAF50;
-    
-    display: flex;
-    
-    justify-content: space-around;
-    
-    margin-bottom: 20px;
-}
+    border: 1px solid black;
+    */
+    padding: 10px;
+  }
 
 /*****************************************************/
 /*
@@ -185,3 +191,23 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   color: black;
   width: 100%;
 }
+
+.btn-Agregar-Vehiculo{
+   margin: 20px;
+}
+
+.bg-color-filtro{
+  background-color: rgb(87, 138, 233);
+}
+.fuente-tabla-color{
+  color: white;
+}
+
+.fuente-filtro{
+  font-size: 20px;
+}
+.p-filtro-align{
+  text-align: center;
+  font-size: 25px;
+}
+

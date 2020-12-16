@@ -1,5 +1,5 @@
 
-let divContenedor = document.getElementById("div-contenedor");
+let tabla = document.getElementById("MiTabla");
 let btnAddVehiculoEl=document.getElementById("btnAddVehiculo");
 let overlayEl = document.getElementsByClassName('overlay')[0];   //overlay del input de carga y edicion
 let radNaftaEl = document.getElementById("nafta");
@@ -27,6 +27,9 @@ let percentStyleEl=document.querySelector(".progress-bar");
 // Formulario de Inputs de Vehiculo
 
 let formInputVehiculoEl=document.getElementById("formInputVehiculo");
+
+//toggle button de filtro
+let switchEl=document.getElementById("switch");
 
 
 
