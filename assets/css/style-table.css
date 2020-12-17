@@ -10,15 +10,6 @@
                 background-color: rgb(107, 162, 224);
                 }
 
-/*
-.aacontenedor-tabla {
-    
-    display: flex;    
-    justify-content: center;
-    
-    
-}
-*/
 
 .padd-20{
    padding: 20px;
@@ -60,7 +51,7 @@ lo extraje de w3school*/
 tr:nth-child(even) {
     background-color: #dddddd;
   }
-/*estilos para los botones de agregar,eliminar y editar elementos de la tabla */
+/*estilos para los botones de agregar,eliminar y editar elementos de la tabla (fila) */
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -134,8 +125,7 @@ estilos del modal para agregar, editar filas, asi como también eliminar
 */
 .overlay {
   
-  /*position: absolute;*/
-  position: fixed;
+   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -173,7 +163,7 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   color: black;
   width: 100%;
 }
-
+/*********************************************/
 .btn-Agregar-Vehiculo{
    margin: 20px;
 }
@@ -185,18 +175,23 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   color: white;
 }
 
+/*ajuste al toogle*/
 .fuente-filtro{
   font-size: 20px;
 }
+
+/*parrafo de filtros*/
 .p-filtro-align{
   text-align: center;
   font-size: 25px;
 }
 
+/*usado en las columnas donde van los filtros*/
 .padd-top-filtro{
   padding-top: 15px;
 }
 
+/*usado por el btn de agregar vehiculo*/
 .padd-bottom-btn-add{
   padding-bottom: 30px ;
 }

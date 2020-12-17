@@ -1,4 +1,4 @@
-
+/*esta seccion es para el toggle button*/
 .outerDivFull { margin:20px; } 
 
 .switchToggle input[type=checkbox]{height: 0; width: 0; visibility: hidden; position: absolute; }
@@ -9,4 +9,4 @@
 .switchToggle input:checked + label:before, .switchToggle input:checked + input + label:before {content: 'Yes'; position: absolute; top: 5px; left: 10px; width: 26px; height: 26px; border-radius: 90px; transition: 0.3s; text-indent: 0; color: #fff; }
 .switchToggle input:checked + label:after, .switchToggle input:checked + input + label:after {left: calc(100% - 2px); transform: translateX(-100%); }
 .switchToggle label:active:after {width: 60px; } 
-.toggle-switchArea { margin: 10px 0 10px 0; }
+.toggle-switchArea { margin: 10px 0 10x 0; }

@@ -1,7 +1,5 @@
 let idGral = vehiculos.length;  // ESTA VARIABLE SIRVE PARA GENERAR IDENTIFICADORES DE VEHICULOS
 
-//let vehiculosBak=[];  // SE USA CUANDO SE APLICAN FILTROS
-
 let vehiculosBak = vehiculos;
 
 //ELEMENTOS DE LA TABLA - DEFINICION DEL CUERPO DE TABLA
@@ -88,7 +86,6 @@ let crearFila = (tbodyEl, posicion, vehiculo) => {
 }
 
 btnModalBorrarEl.addEventListener("click", (ev) => {
-  //let posicionABorrar=getPosicionId(idABorrar,vehiculos);
   vehiculos = vehiculos.filter(vehiculo => vehiculo.id != idABorrar);
   borrarElementosTabla();
   crearCuerpoTabla(vehiculos);
@@ -151,7 +148,6 @@ let setearValoresInicialesAFiltros=()=> {
 
 switchEl.addEventListener("click",()=>{
 
-  //console.log("click:"+switchEl.checked);
   if (switchEl.checked){
     radAllEl.checked=true;
     radNaftaEl.disabled=false;
@@ -166,7 +162,6 @@ switchEl.addEventListener("click",()=>{
        
       setearValoresInicialesAFiltros();
   }
-
 
 });
 
@@ -192,16 +187,13 @@ let borrarElementosTabla = () => {
 }
 
 radNaftaEl.addEventListener("click", () => {
-  //  vehiculosBak = vehiculos;
   let vehiculosFilt = vehiculos.filter(auto =>
     auto.combustible == "nafta");
-  // console.table(vehiculosFilt);
   borrarElementosTabla();
   crearCuerpoTabla(vehiculosFilt);
 });
 
 radGncEl.addEventListener("click", () => {
-  // vehiculosBak = vehiculos;
   let vehiculosFilt = vehiculos.filter(auto =>
     auto.combustible == "gnc");
   borrarElementosTabla();
@@ -209,7 +201,6 @@ radGncEl.addEventListener("click", () => {
 });
 
 radDieselEl.addEventListener("click", () => {
-  //  vehiculosBak = vehiculos;
   let vehiculosFilt = vehiculos.filter(auto =>
     auto.combustible == "diesel");
   borrarElementosTabla();
@@ -217,7 +208,6 @@ radDieselEl.addEventListener("click", () => {
 });
 
 radAllEl.addEventListener("click", () => {
-  //  vehiculos=vehiculosBak;  
   borrarElementosTabla();
   crearCuerpoTabla(vehiculos);
 });
@@ -228,7 +218,6 @@ function showModal() {
 
 /* Aca tengo el manejador del evento click */
 btnAddVehiculoEl.addEventListener('click', () => {
-  //ev.preventDefault();
   idAeditar = -1;
   clearInputs();
   showModal();
@@ -250,8 +239,6 @@ formInputVehiculoEl.addEventListener("submit", (ev) => {
     combustible: inputCombustibleEl.value,
     precio: inputPrecioEl.value,
   }
-
-  //let tbodyEl = document.getElementById("bodyMiTabla");
 
   if (idAeditar == -1) {   // AGREGAR FILA AL FINAL
     //agrego el vehiculo al arreglo de objetos vehiculo
@@ -319,9 +306,4 @@ function displayProgressBar() {
 
 //Cuando se activa o desactiva el filtro con el botón toggle
 
-switchEl.addEventListener("click",() => {
 
-  console.log("filtro activo");
-  /*radNaftaEl  radGncEl  radDieselEl   radAllEl*/
-
-});
