@@ -16,66 +16,120 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg   bg-company">
+        <img class="borde-logo" src="../imagenes/logo/logo3-blue.jpeg" alt="Logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Vehiculos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="../html/financiamiento.html">Financiamiento</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank"
+                        href="./assets/html/TablaVehiculosEnVenta.html">Oportunidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Posventa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Propietarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pregunta a DreamsCars</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
     <div class="container-fluid bg-barra-blue">
         <div class="row">
-            <h2 class="header-seccion-t fuente-tabla-color">Vehiculos en Venta. Sólo pueden operar con estos vehiculos los vendedores
+
+            <div class="row">
+                <div class="col-md-12 bg-barra-blue h-barra-blue">
+                  <a href ="./../../index.html" target="_blank" ><i class="far fa-arrow-alt-circle-left icon-financ"></i></a>
+                </div>
+             
+          </div>
+            <h2 class="header-seccion-t fuente-tabla-color">Vehiculos en Venta. Sólo pueden operar con estos vehiculos
+                los vendedores
                 autorizados por la concesionaria.</h2>
         </div>
-       <!-- <div class="row padd-20" id="div-btn-agregar-vehiculo">-->
+        <!-- <div class="row padd-20" id="div-btn-agregar-vehiculo">-->
         <div class="row padd-20">
             <div class="col-3"></div>
-            <div class="col-6"> 
-                <button type="button" id="btnAddVehiculo" class="btn btn-primary btn-lg btn-block">Agregar Nuevo
+            <div class="col-6 padd-bottom-btn-add">
+                <button type="button" id="btnAddVehiculo" class="btn btn-primary btn-lg btn-block ">Agregar Nuevo
                     Vehiculo</button>
                 <!--<button id="btnAddVehiculo" class="button button2">Agregar Nuevo Vehiculo</button>-->
             </div>
             <div class="col-3"></div>
-        </div>    
-     <!-- </div>-->
-      <div class="row  bg-color-filtro fuente-tabla-color fuente-filtro" id="div-filtros">
-            <div class="col-1 bg-barra-blue"></div>
+        </div>
+        <!-- </div>-->
+        <div class="row  bg-color-filtro fuente-tabla-color fuente-filtro" id="div-filtros">
+            <div class="col-1 bg-barra-blue "></div>
             <div class="col-2">
-                <div class="outerDivFull" >
+                <div class="outerDivFull">
                     <div class="switchToggle">
                         <input type="checkbox" id="switch">
                         <label for="switch">Toggle</label>
                     </div>
                 </div>
-           </div>
-            <div class="col-4">
-                <p class="fuente-filtro p-filtro-align">Tipo de combustible  :</p>
             </div>
-            <div class="col-1">
-                <input type="radio" id="nafta" name="combustible" value="nafta">
+            <div class="col-4">
+                <p class="fuente-filtro p-filtro-align padd-top-filtro">Tipo de combustible :</p>
+            </div>
+            <div class="col-1 padd-top-filtro">
+                <input type="radio" id="nafta" class="" name="combustible" value="nafta">
                 <label for="nafta"> Nafta</label>
             </div>
-            <div class="col-1">
+            <div class="col-1 padd-top-filtro">
                 <input type="radio" id="gnc" name="combustible" value="gnc">
                 <label for="gnc"> Gnc</label>
-            </div>    
-            <div class="col-1">
+            </div>
+            <div class="col-1 padd-top-filtro">
                 <input type="radio" id="diesel" name="combustible" value="diesel">
                 <label for="diesel"> Diesel</label>
-            </div>    
-            <div class="col-1">
+            </div>
+            <div class="col-1 padd-top-filtro">
                 <input type="radio" id="all" name="combustible" value="all">
                 <label for="all"> all</label>
             </div>
             <div class="col-1 bg-barra-blue"></div>
-          <!--  <div class="col-1 bg-barra-blue"></div>-->
-    </div>
+            <!--  <div class="col-1 bg-barra-blue"></div>-->
+        </div>
 
-      <!--  <div class="container ">-->
-            <div class="row">
-                <div class="col-1 bg-barra-blue"></div>
-                <div class="col-10">
-                    <table class="table" id="MiTabla"></table>
-                </div>
-                <div class="col-1 bg-barra-blue"></div>
+        <!--  <div class="container ">-->
+        <div class="row">
+            <div class="col-1 bg-barra-blue"></div>
+            <div class="col-10">
+                <table class="table" id="MiTabla"></table>
             </div>
+            <div class="col-1 bg-barra-blue"></div>
+        </div>
         <!--</div>-->
 
     </div>
+    <!--FOOTER-->
+    
+        <div class="row  bg-company">
+            <div class="col-md-9 d-flex just-pie align-items-center">
+                <p class="letra-pie">Sigue a DreamsCars </p>
+            </div>
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook icon"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram icon"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter icon"></i></a>
+            </div>
+        </div>
+    
+
 
     <div class="overlay display-none">
         <!-- modal -->

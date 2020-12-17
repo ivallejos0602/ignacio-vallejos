@@ -10,29 +10,19 @@
                 background-color: rgb(107, 162, 224);
                 }
 
-
+/*
 .aacontenedor-tabla {
     
     display: flex;    
     justify-content: center;
-    /*
-    align-items: center;
-    */
-    /*
-    height: 380px;
-    background-color: pink;
-    */
+    
     
 }
+*/
 
 .padd-20{
    padding: 20px;
-  /*
-  display: flex;
-  justify-content: space-around;
-  
-  background-color: aquamarine;
-    */
+
 }
 
 h1, h3 {
@@ -42,11 +32,7 @@ h1, h3 {
 table {
     font-family: arial, sans-serif;
     font-size: 20px;
-    /*
-    border-collapse: collapse;
-    width: 85%;
-    */
-  }
+   }
 
 td, th {
     text-align: left;
@@ -139,10 +125,6 @@ tr:nth-child(even) {
     text-align: center;
     font-size: 40px;
     margin: 30px;
-    /*
-    background-color: #4CAF50;
-    border: 1px solid black;
-    */
     padding: 10px;
   }
 
@@ -197,7 +179,7 @@ estilos del modal para agregar, editar filas, asi como también eliminar
 }
 
 .bg-color-filtro{
-  background-color: rgb(87, 138, 233);
+  background-color: rgb(58, 89, 148);
 }
 .fuente-tabla-color{
   color: white;
@@ -211,3 +193,10 @@ estilos del modal para agregar, editar filas, asi como también eliminar
   font-size: 25px;
 }
 
+.padd-top-filtro{
+  padding-top: 15px;
+}
+
+.padd-bottom-btn-add{
+  padding-bottom: 30px ;
+}

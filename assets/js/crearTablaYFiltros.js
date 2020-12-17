@@ -163,8 +163,7 @@ switchEl.addEventListener("click",()=>{
         borrarElementosTabla();
         crearCuerpoTabla(vehiculos);
        }
-           
-
+       
       setearValoresInicialesAFiltros();
   }
 
